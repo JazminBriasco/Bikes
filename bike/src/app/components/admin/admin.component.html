@@ -1,0 +1,39 @@
+<p>admin works!</p>
+<p>1) Servicio que retorna el listado de clientes</p>
+<p>2) Consumir el servicio desde el componente "admin" y generar una tabla que muestre los 9 campos del array JSON</p>
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Model</th>
+        <th scope="col">Serial Number</th>
+        <th scope="col">Purchase Price</th>
+        <th scope="col">Purchase Date</th>
+        <th scope="col">Contact</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <tr *ngFor="let cliente of clientes">
+            
+            <td>{{ cliente.id }}</td>
+
+            <td><a [routerLink] = "['/admin/view/', cliente.id]">{{ cliente.name }}</a></td>
+            
+            <td>{{ cliente.email }}</td>
+            <td>{{ cliente.phone }}</td>
+            <td>{{ cliente.model }}</td>
+            <td>{{ cliente.serialNumber }}</td>
+            <td>{{ cliente.purchasePrice }}</td>
+            <td>{{ cliente.purchaseDate }}</td>
+            <div *ngIf="cliente.contact == true; else elseBlock">Se contactó.</div>
+            <ng-template #elseBlock>No se contactó.</ng-template>
+            
+          </tr>
+    </tbody>
+  </table>
+
